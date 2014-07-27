@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <drawable name="trans">#00000000</drawable>
+    <drawable name="action_bar_color">#ff669900</drawable>
+
+</resources>
