@@ -5,9 +5,6 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewTreeObserver;
@@ -33,10 +30,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+
+        //The default background alpha.
         actionBarBgDrawable = getResources().getDrawable(R.drawable.action_bar_color);
         actionBarBgDrawable.setAlpha(0);
         getActionBar().setBackgroundDrawable(actionBarBgDrawable);
 
+        // The default title textColor alpha.
         int actionBarTitleId = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
         if (actionBarTitleId > 0) {
             TextView title = (TextView) findViewById(actionBarTitleId);
@@ -62,6 +62,9 @@ public class MainActivity extends Activity {
         });
     }
 
+    /**
+     * Get the current slide in multiples.
+     */
     private float getScrollMultiple() {
         int scrollY = scrollView.getScrollY();
         layoutBottom.setY(-scrollY / 2);
@@ -71,6 +74,7 @@ public class MainActivity extends Activity {
         multiple = multiple < 0 ? 0 : multiple;
         return multiple;
     }
+
 
     private void changeActionBarTitleAlpha() {
         int actionBarTitleId = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
@@ -91,7 +95,6 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
